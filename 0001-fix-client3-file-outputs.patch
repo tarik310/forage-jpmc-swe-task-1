@@ -1,0 +1,136 @@
+From 5bba859ee3e5cc36a26531a36118bf882787bc75 Mon Sep 17 00:00:00 2001
+From: tarik310 <tareq310harh@gmail.com>
+Date: Mon, 1 Jul 2024 10:55:20 +0300
+Subject: [PATCH] fix client3 file outputs
+
+---
+ 0001-Re-add-sample-unit-test.patch  |  44 ++++++++++++++++++++++++++++
+ __pycache__/client3.cpython-312.pyc | Bin 0 -> 1563 bytes
+ client3.py                          |  13 ++++----
+ 3 files changed, 51 insertions(+), 6 deletions(-)
+ create mode 100644 0001-Re-add-sample-unit-test.patch
+ create mode 100644 __pycache__/client3.cpython-312.pyc
+
+diff --git a/0001-Re-add-sample-unit-test.patch b/0001-Re-add-sample-unit-test.patch
+new file mode 100644
+index 0000000..f682207
+--- /dev/null
++++ b/0001-Re-add-sample-unit-test.patch
+@@ -0,0 +1,44 @@
++From 879221fec2b863d37d5b493f02a530a8098ef6ef Mon Sep 17 00:00:00 2001
++From: Joe Ferrer <joe@theforage.com>
++Date: Wed, 1 Mar 2023 00:11:51 +1100
++Subject: [PATCH] Re-add sample unit test
++
++---
++ client_test.py | 25 +++++++++++++++++++++++++
++ 1 file changed, 25 insertions(+)
++ create mode 100644 client_test.py
++
++diff --git a/client_test.py b/client_test.py
++new file mode 100644
++index 0000000..af2bf26
++--- /dev/null
+++++ b/client_test.py
++@@ -0,0 +1,25 @@
+++import unittest
+++from client3 import getDataPoint
+++
+++class ClientTest(unittest.TestCase):
+++  def test_getDataPoint_calculatePrice(self):
+++    quotes = [
+++      {'top_ask': {'price': 121.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+++      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+++    ]
+++    """ ------------ Add the assertion below ------------ """
+++
+++  def test_getDataPoint_calculatePriceBidGreaterThanAsk(self):
+++    quotes = [
+++      {'top_ask': {'price': 119.2, 'size': 36}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 120.48, 'size': 109}, 'id': '0.109974697771', 'stock': 'ABC'},
+++      {'top_ask': {'price': 121.68, 'size': 4}, 'timestamp': '2019-02-11 22:06:30.572453', 'top_bid': {'price': 117.87, 'size': 81}, 'id': '0.109974697771', 'stock': 'DEF'}
+++    ]
+++    """ ------------ Add the assertion below ------------ """
+++
+++
+++  """ ------------ Add more unit tests ------------ """
+++
+++
+++
+++if __name__ == '__main__':
+++    unittest.main()
++-- 
++2.43.0.windows.1
++
+diff --git a/__pycache__/client3.cpython-312.pyc b/__pycache__/client3.cpython-312.pyc
+new file mode 100644
+index 0000000000000000000000000000000000000000..ecd7ad920e1e618e521bb26e1efcfd3f5e3c98be
+GIT binary patch
+literal 1563
+zcmah}O>7%Q6rQnn*SoPD;xsmGV#E~D5?674RS~R|N;CnLL(~*nk(FV!_D+&@Y_Ge!
+zriyWp4;+l(kP4xsLWtf7$^}j!P6ZAexWuulgeiw2PQ9fGr<{1RwxN(pj5ObydGq$o
+z_kMPM35UB7jEhI_FH9>4{lPb#5pFLI>lmSRWFQ0Qk=l}2#opeh`VF5d7=BeWgb$D^
+z86seS%7(N&h>-oI4^ahX7Zta_3m+Xhjo$tgAvFl6D0i}T_Bc|1uK)3UYn^-MxQ+_B
+zXOC;aFV6Xn>$lpf4v&t^o&JAYHKHII0p`yG^Io_?qP?B((*o#DsC{Zwjls#&Mu499
+z3>z}-15{`fu#3h3gP$v%Z!r4!tbjc05MY4DXl$#^xg!0OE3jJ^&<b9`iSR>CbGCAN
+z$#qMqk&(QW)$>c1<EAD@Cr3wal&QUP(KIf+w`%?g8PB$}?!^WSkssz^24Ed2s0uYb
+z1?yGp{%r?3AJ-Xvjvc0}zJFN=Pq6S;eXBwhSAA7~Rag+-Knbz(BDrE)MmbA~p3f6^
+ziIO6v1~tgLdcI5@;#y>p7OAbfU_lJs)k~IHbO{q3*UB!lfNPbsjA<~jWSd#q+Uw48
+z0yA+TZ|QDAWa5po<x-mm#}u&DTBZt^wU#zy5;-CO;p6C)OR4lVhuTj1P2Dz^)6>*h
+zhI`ULZ^5$lMVfAjWUf@mCY_r!>4LB1SUQ_GY0;e+F0HW8B6X*M?iEhg=D!Nzm%I*8
+zLl1<hy-;NBg%4+IGr#pj*XYLOM(pgJn~m5=vuCt+`ANFHP_#C)7wlO}Y|L+p+ri|v
+zkURu$DEr?Y_A1Cj;uVCB@Kv58uThsk5>1O(3&e|G(}`X*+UpE?$m{zRO88iyecV}O
+z9DV^Ib_fKMA+D?3k=+N|b1)qlpcPXvWOsW;npV)wqNY^>b3FG3sVGEu$slAuRgs1W
+zq$^dChg!F%j&PzPdrrw2CvlPqImaq8$p(H_fpwSdeBR6q+Z1}&ahcTGGjZ<P%++~@
+zXT9utbeODZMZG{ZjR_`{oQdFLkut0?5t_kpSfJx20A8#Tg=?Ue1>I$WO?87wUavSd
+zymiRy7@NO;c8~*4sn=&v&<I!XSiP(q$x{XB;yiuXhDQzYR64r=`+kh^;W>mu_fhyh
+zitbBD8LEjOM7f3!qyQd1==0<7em4?A^~#R_)bHWQtuq_=lfjSPIY6>FQOA3cfwjK%
+z{#*SUuYNImdv-TI-iVKXeg502Z>H{s?@B+1e+d8dRCD4=Gd{N)zut&nZ^qwhM&|3%
+z1NqWkbl?E_6a&|1ejU5;9c_+HH$ubpnYEWT%*`kZMZPcpXzt9ZJ86BpH*+tP-50s_
+jBN-{(_1x{rJ2RW-n*(Ew?y-CF_@fB$*%y(}?*;xBfA)g7
+
+literal 0
+HcmV?d00001
+
+diff --git a/client3.py b/client3.py
+index 3fc09b7..54e5bab 100644
+--- a/client3.py
++++ b/client3.py
+@@ -31,18 +31,18 @@ N = 500
+ 
+ def getDataPoint(quote):
+     """ Produce all the needed values to generate a datapoint """
+-    """ ------------- Update this function ------------- """
+     stock = quote['stock']
+     bid_price = float(quote['top_bid']['price'])
+     ask_price = float(quote['top_ask']['price'])
+-    price = bid_price
++    price = bid_price + ask_price /2
+     return stock, bid_price, ask_price, price
+ 
+ 
+ def getRatio(price_a, price_b):
+     """ Get ratio of price_a and price_b """
+-    """ ------------- Update this function ------------- """
+-    return 1
++    if price_b==0:
++        return
++    return price_a/price_b
+ 
+ 
+ # Main
+@@ -51,9 +51,10 @@ if __name__ == "__main__":
+     for _ in iter(range(N)):
+         quotes = json.loads(urllib.request.urlopen(QUERY.format(random.random())).read())
+ 
+-        """ ----------- Update to get the ratio --------------- """
++        prices = {}
+         for quote in quotes:
+             stock, bid_price, ask_price, price = getDataPoint(quote)
++            prices[stock]=price
+             print("Quoted %s at (bid:%s, ask:%s, price:%s)" % (stock, bid_price, ask_price, price))
+ 
+-        print("Ratio %s" % getRatio(price, price))
++        print("Ratio %s" % getRatio(prices["ABC"], prices["DEF"]))
+-- 
+2.43.0.windows.1
+
